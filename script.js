@@ -4,11 +4,11 @@ const submitBtn = document.getElementById('submitBtn');
 const pillBar = document.getElementById('pillBar');
 const historyList = document.getElementById('historyList');
 
-// Correct API Detection
-const API_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') 
-    ? 'http://127.0.0.1:5000/api/translate' 
-    : '/api/translate';
+// Inside script.js
 
+const API_URL = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') 
+    ? 'http://127.0.0.1:5000/api/translate' // For local testing
+    : '/api/translate';                   // For Vercel Production
 // --- Sidebar logic ---
 document.getElementById('openSidebar').onclick = () => document.getElementById('sidebar').classList.add('active');
 document.getElementById('closeSidebar').onclick = () => document.getElementById('sidebar').classList.remove('active');
