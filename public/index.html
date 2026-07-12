@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AI Translator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="openSidebar" class="menu-trigger">
+        <i class="fa-solid fa-bars-staggered"></i>
+    </button>
+
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <p class="heading">Settings</p>
+            <button id="closeSidebar"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        
+        <div class="history-container">
+            <p class="section-label">Recent Translations</p>
+            <div id="historyList"></div>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="toggle-group">
+                <span>Dark Mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="toggle-group">
+                <span>Auto-Detect</span>
+                <label class="switch">
+                    <input type="checkbox" id="autoDetectToggle" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <button id="logoutBtn" class="secondary-btn">Logout</button>
+        </div>
+    </div>
+
+    <main class="app-container">
+        <div id="chatArea" class="chat-area">
+            <div class="message-group ai">
+                <div class="avatar"><i class="fa-solid fa-robot"></i></div>
+                <div class="message shadow-sm">Welcome! Type something below to translate instantly.</div>
+            </div>
+        </div>
+
+        <div class="input-container">
+            <div class="pill-bar" id="pillBar">
+                <div class="select-wrapper">
+                    <select id="targetLang" class="lang-select">
+                        <option value="en">ENGLISH</option>
+                        <option value="es">SPANISH</option>
+                        <option value="fr">FRENCH</option>
+                        <option value="de">GERMAN</option>
+                        <option value="hi">HINDI</option>
+                        <option value="te">TELUGU</option>
+                        <option value="zh-CN">CHINESE</option>
+                        <option value="ar">ARABIC</option>
+                    </select>
+                </div>
+                
+                <input type="text" id="userInput" placeholder="Translate something..." class="inputField" autocomplete="off">
+                
+                <button id="submitBtn">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
