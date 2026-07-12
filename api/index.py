@@ -7,11 +7,15 @@ CORS(app)
 
 @app.route('/api/translate', methods=['POST', 'GET'])
 def translate_text():
+    # Health check for browser testing
     if request.method == 'GET':
-        return jsonify({"status": "Backend is running"}), 200
+        return jsonify({"status": "Backend is active"}), 200
 
     try:
-        data = request.json
+        data = request.get_json()
+        if not data:
+            return jsonify({"error": "No data received"}), 400
+            
         text = data.get('text')
         target = data.get('target', 'en')
         source = data.get('source', 'auto')
@@ -19,7 +23,7 @@ def translate_text():
         if not text:
             return jsonify({"error": "No text provided"}), 400
 
-        # Logic for translation
+        # Translation Logic
         translated = GoogleTranslator(source=source, target=target).translate(text)
         
         return jsonify({
