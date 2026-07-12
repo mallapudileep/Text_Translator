@@ -1,4 +1,5 @@
 {
+  "version": 2,
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/translate.py" },
     { "source": "/(.*)", "destination": "/public/$1" }

@@ -3,31 +3,18 @@ from flask_cors import CORS
 from deep_translator import GoogleTranslator
 
 app = Flask(__name__)
-# IMPORTANT: This allows your HTML on port 5500 to talk to Python on port 5000
-CORS(app) 
+CORS(app)
 
-@app.route('/api/translate', methods=['POST'])
+# Ensure this is the EXACT name of your route
+@app.route('/api/translate', methods=['POST', 'GET'])
 def translate_text():
-    try:
-        data = request.json
-        text = data.get('text')
-        target = data.get('target', 'en')
-        source = data.get('source', 'auto')
+    # ... (Keep your existing translation code here)
+    data = request.json
+    text = data.get('text')
+    # ... rest of your logic
 
-        if not text:
-            return jsonify({"error": "No text"}), 400
+# IMPORTANT: Remove the 'def handler' function if it's there. 
+# Vercel's Flask support only needs the 'app' variable.
 
-        translated = GoogleTranslator(source=source, target=target).translate(text)
-        
-        return jsonify({
-            "translated": translated,
-            "source": source,
-            "target": target
-        })
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
-# This part is for LOCAL testing only
-if __name__ == '__main__':
-    print("Backend running on http://127.0.0.1:5000")
-    app.run(port=5000, debug=True)
+if __name__ == "__main__":
+    app.run()
