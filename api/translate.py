@@ -6,26 +6,26 @@ app = Flask(__name__)
 CORS(app)
 
 @app.route('/api/translate', methods=['POST', 'GET'])
-def translate_text():
-    # Health check for browser testing
+def translate():
+    # Health check (useful for debugging 404s)
     if request.method == 'GET':
-        return jsonify({"status": "Backend is active"}), 200
+        return jsonify({"status": "Backend Active"}), 200
 
     try:
         data = request.get_json()
         if not data:
             return jsonify({"error": "No data received"}), 400
-            
-        text = data.get('text')
+
+        text = data.get('text', '')
         target = data.get('target', 'en')
         source = data.get('source', 'auto')
 
         if not text:
-            return jsonify({"error": "No text provided"}), 400
+            return jsonify({"error": "Empty text"}), 400
 
-        # Translation Logic
+        # Translation execution
         translated = GoogleTranslator(source=source, target=target).translate(text)
-        
+
         return jsonify({
             "translated": translated,
             "source": source,

@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,68 +8,66 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="openSidebar" class="menu-trigger">
-        <i class="fa-solid fa-bars-staggered"></i>
-    </button>
+    <!-- Hamburger Menu Trigger -->
+    <button id="openSidebar" class="menu-trigger"><i class="fa-solid fa-bars-staggered"></i></button>
 
+    <!-- Sidebar Overlay & Sidebar -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
     <div id="sidebar" class="sidebar">
         <div class="sidebar-header">
-            <p class="heading">Settings</p>
+            <span class="heading">Menu</span>
             <button id="closeSidebar"><i class="fa-solid fa-xmark"></i></button>
         </div>
         
         <div class="history-container">
-            <p class="section-label">Recent Translations</p>
+            <p class="section-label">History</p>
             <div id="historyList"></div>
         </div>
 
         <div class="sidebar-footer">
-            <div class="toggle-group">
+            <div class="setting-row">
                 <span>Dark Mode</span>
                 <label class="switch">
                     <input type="checkbox" id="darkModeToggle">
                     <span class="slider round"></span>
                 </label>
             </div>
-            <div class="toggle-group">
+            <div class="setting-row">
                 <span>Auto-Detect</span>
                 <label class="switch">
                     <input type="checkbox" id="autoDetectToggle" checked>
                     <span class="slider round"></span>
                 </label>
             </div>
-            <button id="logoutBtn" class="secondary-btn">Logout</button>
+            <button id="logoutBtn" class="pill-button secondary">Logout</button>
         </div>
     </div>
 
-    <main class="app-container">
+    <!-- Main Content Area -->
+    <main class="app-main">
         <div id="chatArea" class="chat-area">
             <div class="message-group ai">
                 <div class="avatar"><i class="fa-solid fa-robot"></i></div>
-                <div class="message shadow-sm">Welcome! Type something below to translate instantly.</div>
+                <div class="bubble">Welcome! Choose a language and type to translate instantly.</div>
             </div>
         </div>
 
+        <!-- Animated Bottom Input -->
         <div class="input-container">
             <div class="pill-bar" id="pillBar">
-                <div class="select-wrapper">
-                    <select id="targetLang" class="lang-select">
-                        <option value="en">ENGLISH</option>
-                        <option value="es">SPANISH</option>
-                        <option value="fr">FRENCH</option>
-                        <option value="de">GERMAN</option>
-                        <option value="hi">HINDI</option>
-                        <option value="te">TELUGU</option>
-                        <option value="zh-CN">CHINESE</option>
-                        <option value="ar">ARABIC</option>
+                <div class="lang-selector">
+                    <select id="targetLang">
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                        <option value="hi">Hindi</option>
+                        <option value="zh-CN">Chinese</option>
+                        <option value="te">Telugu</option>
                     </select>
                 </div>
-                
-                <input type="text" id="userInput" placeholder="Translate something..." class="inputField" autocomplete="off">
-                
-                <button id="submitBtn">
-                    <i class="fa-solid fa-paper-plane"></i>
-                </button>
+                <input type="text" id="userInput" placeholder="Translate something..." autocomplete="off">
+                <button id="submitBtn"><i class="fa-solid fa-paper-plane"></i></button>
             </div>
         </div>
     </main>
